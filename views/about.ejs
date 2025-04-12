@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Furfrnd</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2AA8A8;
+            /* Oceanic Teal */
+            --secondary: #FF6B6B;
+            /* Coral Accent */
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f8f9fa;
+        }
+
+        .logo-text {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 2rem;
+            color: #2AA8A8;
+            /* Teal */
+            font-weight: 600;
+            letter-spacing: 1px;
+            background: linear-gradient(45deg, #2AA8A8, #FF6B6B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+
+        .hero-about {
+            background: linear-gradient(rgba(42, 168, 168, 0.9),
+                    rgba(42, 168, 168, 0.8)),
+                url('https://images.unsplash.com/photo-1583511655857-d19b40a7a54e') center/cover;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .mission-card {
+            border: 2px solid var(--primary);
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(42, 168, 168, 0.1);
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        .nav-link {
+            color: var(--primary) !important;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
+        <a class="logo-text" href="/">
+            🐶 furfrnd
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/register">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-about">
+        <div class="container text-center">
+            <h1 class="display-5 fw-bold">More Than Just a Pet Platform</h1>
+            <p class="lead">Connecting loving homes with happy paws since 2023</p>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2 class="text-primary mb-4">Our Story</h2>
+                <p class="lead">Founded by passionate dog lovers, Furfrnd began as a small initiative to connect ethical
+                    breeders with caring families. Today, we've grown into India's most trusted platform for canine
+                    adoption and community building.</p>
+            </div>
+            <div class="col-md-6">
+                <img src="https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb" alt="Founders"
+                    class="img-fluid rounded-3">
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center text-primary mb-5">Our Core Values</h2>
+            <div class="row g-4">
+                <div class="col-md-4 text-center">
+                    <i class="fas fa-heartbeat value-icon"></i>
+                    <h4 class="my-3">Ethical Practices</h4>
+                    <p>Every breeder undergoes strict verification to ensure humane treatment of animals</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <i class="fas fa-users value-icon"></i>
+                    <h4 class="my-3">Community First</h4>
+                    <p>Building a supportive network of dog lovers through events and forums</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <i class="fas fa-shield-alt value-icon"></i>
+                    <h4 class="my-3">Lifetime Support</h4>
+                    <p>24/7 veterinary consultation and training resources for every adoption</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="container py-5">
+        <h2 class="text-center text-primary mb-5">Meet the Pack Leaders</h2>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-4 text-center">
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle mb-3"
+                        alt="Team Member">
+                    <h4>Priya Sharma</h4>
+                    <p class="text-secondary">CEO & Founder</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle mb-3"
+                        alt="Team Member">
+                    <h4>Rahul Verma</h4>
+                    <p class="text-secondary">Head Veterinarian</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2023 Furfrnd. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/your-kit-code.js"></script>
+</body>
+
+</html>

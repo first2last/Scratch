@@ -8,16 +8,22 @@ module.exports = async function (req, res, next) {
     }
 
     try {
-        let decoded = jwt.verify(req.cookies.token, process.env.JWT_KEY);
-        let user = await userModel
-            .findOne({ email: email })
+        const decoded = jwt.verify(req.cookies.token, process.env.JWT_KEY);
+
+        const user = await userModel
+            .findOne({ email: decoded.email }) // 🔧 FIXED LINE
             .select("-password");
 
-        req.user = user;
+        if (!user) {
+            req.flash("Error", "User not found");
+            return res.redirect("/register");
+        }
 
+        req.user = user; // Attaching user to request
         next();
     } catch (err) {
-        req.flash("Error", "Something went wrong");
-        res.redirect("/");
+        console.error("Auth Middleware Error:", err);
+        req.flash("Error", "Authentication failed");
+        res.redirect("/register");
     }
 };

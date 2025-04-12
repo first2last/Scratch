@@ -1,10 +1,24 @@
 const express = require('express');
-const { model } = require('mongoose');
-const upload = require('../config/multer-config');
-const productModel = require('../models/product-model');
-
-
 const router = express.Router();
+const ownerModel = require('../models/owner-model');
+const { Admin } = require('mongodb');
+const isLoggedin = require('../middlewares/isLoggedIn')
+const productModel = require('../models/product-model');
+const upload = require('../config/multer-config');
+const { model } = require('mongoose');
+
+
+
+router.get("/",  isLoggedin,  async function (req, res) {
+  
+    res.render("dashboard");
+})
+
+
+router.get('/create' , function(req , res){
+    res.render('createProduct');
+})
+
 
 router.post('/create', upload.single("image"), async (req, res) => {
     try {
@@ -23,19 +37,12 @@ router.post('/create', upload.single("image"), async (req, res) => {
       
 
    req.flash('success' , 'Product created successfully');
-   res.redirect('/owner/admin');
+   res.redirect('/admin/');
 
     } catch (err) {
         console.error("❌ Error in product creation:", err);
         res.status(500).send("Something went wrong");
     }
 });
-
-
-
-
-router.get("/", function (req, res) {
-    res.send("YO");
-})
 
 module.exports = router; 

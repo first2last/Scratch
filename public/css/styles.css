@@ -60,7 +60,7 @@ button:hover {
 body {
     height: 100vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url(/images/new.jpg);
+        url(https://images7.alphacoders.com/323/thumb-1920-323376.jpg);
 
     background-repeat: no-repeat;
     background-size: cover;
@@ -135,7 +135,7 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url(/images/SHOP2.jpeg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6Vx_RAGKYZPMaBr4ksRYrQ3bVSjVA_-zSCA&s);
 
     background-repeat: no-repeat;
     background-size: cover;
@@ -165,7 +165,7 @@ main {
 
 
 .login .form-text {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url(/images/LOGIN.jpeg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv4YVGuDSJKNye7T1f88oLb9ETcwPu5cINIg&s);
 
     background-repeat: no-repeat;
     background-size: cover;
@@ -222,6 +222,26 @@ main {
     font-size: 1.6rem;
 }
 
+/* CSS */
+.logo-text {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2rem;
+    color: #2AA8A8;
+    /* Teal */
+    font-weight: 600;
+    letter-spacing: 1px;
+    background: linear-gradient(45deg, #2AA8A8, #FF6B6B);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.brand {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+}
+
+
 input {
     margin: 0.7rem 0;
     width: 20rem;
@@ -271,6 +291,7 @@ input[type="submit"] {
         opacity: 0;
         transform: translateY(-10px);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0);
