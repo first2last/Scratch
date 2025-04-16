@@ -21,25 +21,43 @@
         <div class="container">
             <div class="logo"><!-- Inside your body or navbar -->
                 <div class="brand">
-                    <span class="logo-text"> 🐶 furfrnd</span>
+                    <a href="/"> <span class="logo-text"> 🐶 furfrnd</span></a>
                 </div>
 
             </div>
             <nav>
-                <ul>
-                    <li class="link">
-                        <a href="/">Home</a>
-                    </li>
-                    <li class="link">
-                        <a href="/about">About</a>
-                    </li>
-                    <li class="link">
-                        <a href="/register">Login</a>
-                    </li>
-                    <li class="link">
-                        <a href="/register">Registration</a>
-                    </li>
-                </ul>
+                <% if (user) { %>
+                    <ul>
+                        <li class="link">
+                            <a href="/">Home</a>
+                        </li>
+                        <li class="link">
+                            <a href="/Shop">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="users/logout">
+                                <button type="submit" class="btn text-white px-3 "
+                                    style="background-color: #dc3545; border: none;">
+                                    Logout
+                                </button>
+                            </a>
+
+                        </li>
+
+
+
+
+                    </ul>
+                    <% } else { %>
+                        <ul>
+                            <li class="link">
+                                <a href="/Shop">Shop</a>
+                            </li>
+                            <li class="link">
+                                <a href="/">Home</a>
+                            </li>
+                        </ul>
+                        <% } %>
             </nav>
         </div>
 
@@ -57,7 +75,7 @@
                         
                         <% if (error && error.length) { %>
                         <div class="flash-message error-flash">
-                            <%= error.join(', ') %>
+                            <%= error.join(' , ') %>
                         </div>
                         <% } %>
                                     <!-- Login / Register Box Below -->
@@ -192,14 +210,12 @@
 
 
     <script>
-        const user_con = document.querySelector('.user-container');
-        const regis_btn = document.querySelector('.registration-btn');
-        const login_btn = document.querySelector('.login-btn');
+        const user_con = document.querySelector(' .user-container'); const
+            regis_btn = document.querySelector('.registration-btn'); const
+                login_btn = document.querySelector('.login-btn'); regis_btn.addEventListener('click', () => {
+                    user_con.classList.add('login-section--display')
 
-        regis_btn.addEventListener('click', () => {
-            user_con.classList.add('login-section--display')
-
-        })
+                })
 
         login_btn.addEventListener('click', () => {
             user_con.classList.remove('login-section--display')

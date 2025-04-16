@@ -5,22 +5,19 @@ const isLoggedIn = require('../middlewares/isLoggedIn');
 const userModel = require('../models/user-model');
 
 
-router.get('/', isLoggedIn, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const products = await Product.find();
 
-        // Get user cart count
-        const user = await userModel.findOne({ email: req.user.email });
-        const cartCount = user && user.cart ? user.cart.length : 0;
-
-        let success = req.flash('success');
-        res.render('shop', { products, cartCount, success });
+        const cartCount = req.user?.cart?.length || req.session.guestCart?.length || 0;
+        res.render('shop', { products, cartCount, user: req.user }); // Pass user too
     } catch (err) {
         console.log(err.message);
         req.flash("error", "Could not load shop.");
         res.redirect("/");
     }
 });
+
 
 
 router.get('/cart', isLoggedIn, async function (req, res) {
@@ -51,17 +48,32 @@ router.get('/cart', isLoggedIn, async function (req, res) {
 });
 
 
-router.get('/addToCart/:id', isLoggedIn, async function (req, res) {
+router.get('/addToCart/:id', async (req, res) => {
+    try {
+        if (req.user) {
+            // Authenticated user
+            await userModel.findByIdAndUpdate(
+                req.user._id,
+                { $addToSet: { cart: req.params.id } }, // Prevent duplicates
+                { new: true }
+            );
+            req.flash("success", "Added to Cart");
+        } else {
+            // Guest user
+            if (!req.session.guestCart) req.session.guestCart = [];
+            if (!req.session.guestCart.includes(req.params.id)) {
+                req.session.guestCart.push(req.params.id);
+            }
+            req.flash("success", "Added to Cart (Guest)");
+        }
+        res.redirect('/shop');
+    } catch (err) {
+        console.error(err);
+        req.flash("error", "Failed to add to cart");
+        res.redirect('/shop');
+    }
+});
 
-    let user = await userModel.findOne({ email: req.user.email })
-    user.cart.push(req.params.id);
-    await user.save();
-
-
-
-    req.flash("success", "Added to Cart");
-    res.redirect('/shop');
-})
 
 router.get('/cart/remove/:id', isLoggedIn, async function (req, res) {
     try {
@@ -98,6 +110,20 @@ router.get('/cart/clear', isLoggedIn, async (req, res) => {
         res.redirect('/shop/cart');
     }
 });
+
+router.get('/shop/:id', async (req, res) => {
+    try {
+      const product = await productModel.findById(req.params.id);
+      if (!product) {
+        return res.status(404).send("Product not found");
+      }
+      res.render('product', { product });
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Server error");
+    }
+  });
+  
 
 
 

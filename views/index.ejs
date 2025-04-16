@@ -7,6 +7,7 @@
     <title>Furfrnd - Where Tails Wag & Friends Meet</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
@@ -172,7 +173,7 @@
         }
 
 
-        
+
         .cta-btn {
             margin: 10px;
         }
@@ -181,24 +182,31 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: #FF6B6B;
-            /* Coral color from your palette */
             width: 60px;
             height: 60px;
+            background: #FF6B6B;
+            color: white !important;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white !important;
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.5);
-            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
             transition: all 0.3s ease;
+            z-index: 1000;
+            text-decoration: none;
         }
 
         .help-icon:hover {
-            transform: scale(1.1);
             background: #ff5252;
+            transform: scale(1.1) rotate(15deg);
         }
+
+        .help-icon i {
+            font-size: 1.5rem;
+        }
+
+
+
 
         .testimonial {
             background-color: #f8f9fa;
@@ -206,19 +214,138 @@
             padding: 20px;
         }
 
-        footer {
-            background-color: #343a40;
+        .hero-about {
+            background: linear-gradient(rgba(42, 168, 168, 0.9),
+                    rgba(42, 168, 168, 0.8)),
+                url('https://images.unsplash.com/photo-1583511655857-d19b40a7a54e') center/cover;
+            height: 50vh;
+            display: flex;
+            align-items: center;
             color: white;
-            padding: 40px 0;
         }
 
-        footer a {
-            color: #ffffff;
+        .mission-card {
+            border: 2px solid var(--primary);
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(42, 168, 168, 0.1);
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+
+        .footer {
+            background: linear-gradient(135deg, #2AA8A8, #1f7a7a);
+            color: white;
+            padding: 5rem 0 2rem;
+            position: relative;
+        }
+
+        .footer-brand .logo-text {
+            font-size: 2rem;
+        }
+
+        .footer-heading {
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #FF6B6B;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #FF6B6B;
+            transform: translateY(-3px);
+        }
+
+        .newsletter-form .form-control {
+            border-radius: 25px 0 0 25px;
+            border: none;
+            padding: 0.75rem 1.5rem;
+        }
+
+        .newsletter-form .btn {
+            border-radius: 0 25px 25px 0;
+            padding: 0.75rem 1.5rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            opacity: 0;
+            transition: all 0.3s ease;
             text-decoration: none;
         }
 
-        footer a:hover {
-            text-decoration: underline;
+        .back-to-top.show {
+            opacity: 1;
+        }
+
+        /* Scroll Animation */
+        @media (min-width: 768px) {
+            .footer-link:hover::before {
+                content: '→ ';
+                position: absolute;
+                left: -15px;
+                color: #FF6B6B;
+            }
         }
     </style>
 </head>
@@ -237,7 +364,7 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="/register">Login</a></li>
                 <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
-                <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="/Shop">Shop</a></li>
             </ul>
         </div>
     </nav>
@@ -248,8 +375,10 @@
         <div class="container text-center" style="max-width: 800px;">
             <h1 class="display-5 fw-bold mb-4">Where Tails Wag & Friends Meet</h1>
             <p class="lead mb-4">Join a community of dog lovers & discover your perfect fur buddy.</p>
-            <button class="btn btn-light cta-btn">Meet Our Dogs <i class="bi bi-arrow-right"></i></button>
-            <button class="btn btn-outline-light cta-btn">Join the Pack <i class="bi bi-arrow-right"></i></button>
+            <a href="/shop"> <button class="btn btn-light cta-btn">Meet Our Dogs <i
+                        class="bi bi-arrow-right"></i></button></a>
+            <a href="/register"><button class="btn btn-outline-light cta-btn">Join the Pack <i
+                        class="bi bi-arrow-right"></i></button></a>
         </div>
     </section>
 
@@ -385,39 +514,153 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5>Furfrnd</h5>
-                    <p>Your trusted hub for connecting hearts, tails, and homes.</p>
-                </div>
-                <div class="col-md-4">
-                    <h5>Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Shop</a></li>
-                        <li><a href="#">Register</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5>Follow Us</h5>
-                    <a href="#"><i class="fab fa-facebook fa-lg me-2"></i></a>
-                    <a href="#"><i class="fab fa-instagram fa-lg me-2"></i></a>
-                    <a href="#"><i class="fab fa-twitter fa-lg me-2"></i></a>
-                </div>
+
+    <section class="hero-about">
+        <div class="container text-center">
+            <h1 class="display-5 fw-bold">More Than Just a Pet Platform</h1>
+            <p class="lead">Connecting loving homes with happy paws since 2023</p>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2 class="text-primary mb-4">Our Story</h2>
+                <p class="lead">Founded by passionate dog lovers, Furfrnd began as a small initiative to connect ethical
+                    breeders with caring families. Today, we've grown into India's most trusted platform for canine
+                    adoption and community building.</p>
             </div>
-            <div class="text-center mt-4">
-                <small>&copy; 2025 Furfrnd. All rights reserved.</small>
+            <div class="col-md-6">
+                <img src="https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb" alt="Founders"
+                    class="img-fluid rounded-3">
             </div>
         </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center text-primary mb-5">Our Core Values</h2>
+            <div class="row g-4">
+                <div class="col-md-4 text-center">
+                    <i class="fas fa-heartbeat value-icon"></i>
+                    <h4 class="my-3">Ethical Practices</h4>
+                    <p>Every breeder undergoes strict verification to ensure humane treatment of animals</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <i class="fas fa-users value-icon"></i>
+                    <h4 class="my-3">Community First</h4>
+                    <p>Building a supportive network of dog lovers through events and forums</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <i class="fas fa-shield-alt value-icon"></i>
+                    <h4 class="my-3">Lifetime Support</h4>
+                    <p>24/7 veterinary consultation and training resources for every adoption</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="container py-5">
+        <h2 class="text-center text-primary mb-5">Meet the Pack Leaders</h2>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-4 text-center">
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle mb-3"
+                        alt="Team Member">
+                    <h4>Priya Sharma</h4>
+                    <p class="text-secondary">CEO & Founder</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle mb-3"
+                        alt="Team Member">
+                    <h4>Rahul Verma</h4>
+                    <p class="text-secondary">Head Veterinarian</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-5">
+                <!-- About Column -->
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-brand">
+                        <span class="logo-text">🐶 furfrnd</span>
+                    </div>
+                    <p class="mt-3">Connecting loving homes with happy paws through ethical adoption practices.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-lg-2 col-6 mb-4">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="/shop" class="footer-link">Adopt Now</a></li>
+                        <li class="mb-2"><a href="/about" class="footer-link">Our Story</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Breeders</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Veterinary Care</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div class="col-lg-2 col-6 mb-4">
+                    <h5 class="footer-heading">Support</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="footer-link">FAQ</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Shipping Policy</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="col-lg-4 mb-4">
+                    <h5 class="footer-heading">Join Our Pack</h5>
+                    <p class="text-muted">Get updates on new puppies and special offers</p>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Enter your email">
+                            <button class="btn btn-primary" type="button">
+                                <i class="fas fa-paw"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom text-center py-4">
+                <div class="credits">
+                    <small class="text-muted">
+                        © 2023 Furfrnd. All rights reserved.
+                        <span class="mx-2">|</span>
+                        Made with <i class="fas fa-heart text-danger"></i> in India
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Top -->
+        <a href="#" class="back-to-top">
+            <i class="fas fa-arrow-up"></i>
+        </a>
     </footer>
 
     <!-- Floating Help Icon -->
     <a href="#" class="help-icon">
-        <i class="bi bi-chat-dots"></i>
+        <i class="fas fa-comment-dots fa-lg"></i> <!-- Changed to Font Awesome icon -->
     </a>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -451,6 +694,18 @@
                 price: "₹55,000"
             }
         ];
+
+
+        // Back to Top Button
+        window.addEventListener('scroll', () => {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
 
         // Update details when carousel slides
         document.getElementById('carouselDogs').addEventListener('slide.bs.carousel', event => {
